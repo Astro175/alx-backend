@@ -6,6 +6,7 @@
 
 from base_caching import BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """
      A class FIFOCache that inherits from BaseCaching
@@ -28,7 +29,7 @@ class FIFOCache(BaseCaching):
             first = list(self.cache_data.keys())[0]
             self.cache_data.pop(first)
             print("DISCARD: {}".format(first))
-        self.cache_data[key] = item 
+        self.cache_data[key] = item
 
     def get(self, key):
         """
