@@ -5,11 +5,10 @@
   Babel translator
 """
 
-from flask import Flask, request
+from flask import Flask, render_template
 from flask_babel import Babel
 
 app = Flask(__name__)
-babel = Babel(app)
 
 
 class Config(object):
@@ -17,10 +16,19 @@ class Config(object):
       Babel config class
     """
     LANGUAGES = ["en", "fr"]
-
-
-babel.default_locale = Config.LANGUAGES[0]
-babel.default_timezone = "UTC"
+    DEFAULT_LANGUAGE = 'en'
+    DEFAULT_TIMEZONE = 'UTC'
 
 
 app.config.from_object(Config)
+babel = Babel(app)
+
+
+@app.route('/')
+def index():
+    """Index page"""
+    return render_template('1-index.html')
+
+
+if __name__ == '___main__':
+    app.run()
